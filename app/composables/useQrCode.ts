@@ -1,4 +1,5 @@
 import type { DotType, Options } from 'qr-code-styling'
+import { watch, type Ref } from 'vue'
 
 export type QrFormat = 'png' | 'svg'
 
@@ -47,24 +48,35 @@ export function useQrCode(
   let preview: InstanceType<typeof import('qr-code-styling').default> | null =
     null
 
-  watchEffect(async () => {
-    const el = container.value
-    const value = data.value
-    const currentStyle = style.value
-    if (!el || !value) {
-      if (el) el.replaceChildren()
-      preview = null
-      return
-    }
-    if (preview) {
-      preview.update(buildOptions(value, currentStyle, PREVIEW_SIZE))
-      return
-    }
-    const { default: QRCodeStyling } = await import('qr-code-styling')
-    preview = new QRCodeStyling(buildOptions(value, currentStyle, PREVIEW_SIZE))
-    el.replaceChildren()
-    preview.append(el)
-  })
+  // Dependencies are listed in the getter: anything read after an `await` would not be tracked.
+  watch(
+    () =>
+      [
+        container.value,
+        data.value,
+        style.value.color,
+        style.value.background,
+        style.value.dotsType,
+      ] as const,
+    async ([el, value]) => {
+      if (!el) return
+      if (!value) {
+        el.replaceChildren()
+        preview = null
+        return
+      }
+      const options = buildOptions(value, style.value, PREVIEW_SIZE)
+      const { default: QRCodeStyling } = await import('qr-code-styling')
+      if (preview) {
+        preview.update(options)
+      } else {
+        preview = new QRCodeStyling(options)
+        el.replaceChildren()
+        preview.append(el)
+      }
+    },
+    { immediate: true },
+  )
 
   async function getBlob(format: QrFormat): Promise<Blob> {
     if (!data.value) throw new Error('No data to encode')
