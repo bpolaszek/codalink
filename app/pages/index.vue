@@ -55,15 +55,17 @@
         class="lg:col-start-1"
         :get-blob="getBlob"
         :filename="filename"
-        @done="url && history.add(url)"
-        :disabled="!url" />
-      <QrCustomizer class="lg:col-start-1" v-model="style" :disabled="!url" />
+        :disabled="!url"
+        @done="url && history.add(url)" />
+      <QrCustomizer v-model="style" class="lg:col-start-1" :disabled="!url" />
       <UrlHistory
         class="lg:col-start-1"
         :entries="history.entries.value"
         @select="input = $event"
         @clear="history.clear()" />
     </div>
+
+    <PwaInstallBanner />
   </main>
 </template>
 

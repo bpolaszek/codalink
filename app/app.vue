@@ -1,5 +1,6 @@
 <template>
   <UApp :toaster="{ position: 'bottom-center' }">
+    <NuxtPwaManifest />
     <AppHeader />
     <NuxtPage />
   </UApp>

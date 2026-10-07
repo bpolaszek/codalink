@@ -12,11 +12,12 @@ Turn any URL into a QR code. Customize it, download it as PNG or SVG, copy it or
 - `/?url=https://example.com` pre-fills the input (handy for bookmarklets)
 - Local history of the last 10 URLs (stored in the browser only)
 - English (default) and French, detected from the browser language and switchable from the header
+- Installable PWA that also works offline, with a discreet install hint (native prompt, or the Share menu instructions on iOS Safari)
 - Light and dark mode, mobile and desktop layouts
 
 ## Stack
 
-Nuxt 4 (SPA, `ssr: false`) · Nuxt UI · @nuxtjs/i18n · qr-code-styling · VueUse · Vitest
+Nuxt 4 (SPA, `ssr: false`) · @vite-pwa/nuxt · Nuxt UI · @nuxtjs/i18n · qr-code-styling · VueUse · Vitest
 
 ## Development
 
@@ -26,7 +27,8 @@ yarn dev        # http://localhost:3000
 yarn test       # vitest
 yarn lint       # eslint + prettier
 yarn typecheck
-yarn generate   # static build
+yarn generate   # static build (the service worker only exists in production builds)
+yarn pwa-assets-generator   # regenerate PWA icons from public/favicon.svg
 ```
 
 ## Deployment
