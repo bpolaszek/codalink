@@ -24,5 +24,5 @@ en:
   description: 'Turn any link into a QR code. Customize it, download it as PNG or SVG, copy it or share it.'
 fr:
   title: 'CodaLink - URL en QR code'
-  description: "Transforme n'importe quel lien en QR code. Personnalise-le, télécharge-le en PNG ou SVG, copie-le ou partage-le."
+  description: "Transformez n'importe quel lien en QR code. Personnalisez-le, téléchargez-le en PNG ou SVG, copiez-le ou partagez-le."
 </i18n>

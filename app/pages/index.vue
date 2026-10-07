@@ -101,11 +101,11 @@ en:
   invalid: 'Enter a valid web address (e.g. example.com).'
   empty: 'Your QR code will appear here'
 fr:
-  heading: "Transforme n'importe quel lien en QR code"
-  subheading: 'Colle une URL, personnalise, télécharge ou partage.'
+  heading: "Transformez n'importe quel lien en QR code"
+  subheading: 'Collez une URL, personnalisez, téléchargez ou partagez.'
   label: 'URL à convertir'
   placeholder: 'https://exemple.com'
   clear: 'Effacer'
-  invalid: 'Saisis une adresse web valide (ex. exemple.com).'
-  empty: 'Ton QR code apparaîtra ici'
+  invalid: 'Saisissez une adresse web valide (ex. exemple.com).'
+  empty: 'Votre QR code apparaîtra ici'
 </i18n>

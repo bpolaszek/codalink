@@ -117,5 +117,5 @@ fr:
   copy: 'Copier'
   share: 'Partager'
   copied: 'Image copiée'
-  error: "Une erreur s'est produite. Réessaie."
+  error: "Une erreur s'est produite. Réessayez."
 </i18n>

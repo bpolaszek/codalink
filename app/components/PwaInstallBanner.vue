@@ -36,8 +36,8 @@ en:
   dismiss: 'Dismiss'
 fr:
   label: "Installer l'application"
-  native: 'Installe CodaLink pour y accéder rapidement, même hors ligne.'
-  ios: "Pour installer : touche Partager, puis « Sur l'écran d'accueil »."
+  native: 'Installez CodaLink pour y accéder rapidement, même hors ligne.'
+  ios: "Pour installer : touchez Partager, puis « Sur l'écran d'accueil »."
   install: 'Installer'
   dismiss: 'Fermer'
 </i18n>
