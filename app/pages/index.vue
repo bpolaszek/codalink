@@ -37,11 +37,11 @@
       <UCard
         data-qr
         class="lg:sticky lg:top-6 lg:col-start-2 lg:row-span-5 lg:row-start-1">
-        <div class="flex min-h-[280px] items-center justify-center">
+        <div class="flex min-h-[200px] items-center justify-center">
           <div
             v-show="url"
             ref="qrContainer"
-            class="flex size-[280px] max-w-full items-center justify-center overflow-hidden rounded-lg [&>svg]:max-w-full" />
+            class="w-full max-w-[400px] overflow-hidden rounded-lg [&>svg]:h-auto [&>svg]:w-full" />
           <div v-if="!url" class="text-muted flex flex-col items-center gap-2">
             <UIcon name="i-lucide-qr-code" class="size-16" />
             <p class="text-sm">{{ t('empty') }}</p>

@@ -1,50 +1,39 @@
 <template>
-  <UCollapsible>
+  <div class="space-y-4">
+    <div class="grid grid-cols-2 gap-3">
+      <UFormField :label="t('color')">
+        <input
+          v-model="style.color"
+          type="color"
+          class="border-default h-9 w-full cursor-pointer rounded-lg border bg-transparent p-1" />
+      </UFormField>
+      <UFormField :label="t('background')">
+        <input
+          v-model="style.background"
+          type="color"
+          class="border-default h-9 w-full cursor-pointer rounded-lg border bg-transparent p-1" />
+      </UFormField>
+    </div>
+
+    <UFormField :label="t('shape')">
+      <USelect v-model="style.dotsType" :items="shapes" class="w-full" />
+    </UFormField>
+
+    <UAlert
+      v-if="!scannable"
+      color="warning"
+      variant="subtle"
+      icon="i-lucide-triangle-alert"
+      :description="t('warning')" />
+
     <UButton
-      variant="ghost"
+      variant="link"
       color="neutral"
-      size="sm"
-      icon="i-lucide-palette"
-      trailing-icon="i-lucide-chevron-down"
-      :label="t('title')" />
-    <template #content>
-      <div class="space-y-4 pt-3">
-        <div class="grid grid-cols-2 gap-3">
-          <UFormField :label="t('color')">
-            <input
-              v-model="style.color"
-              type="color"
-              class="border-default h-9 w-full cursor-pointer rounded-lg border bg-transparent p-1" />
-          </UFormField>
-          <UFormField :label="t('background')">
-            <input
-              v-model="style.background"
-              type="color"
-              class="border-default h-9 w-full cursor-pointer rounded-lg border bg-transparent p-1" />
-          </UFormField>
-        </div>
-
-        <UFormField :label="t('shape')">
-          <USelect v-model="style.dotsType" :items="shapes" class="w-full" />
-        </UFormField>
-
-        <UAlert
-          v-if="!scannable"
-          color="warning"
-          variant="subtle"
-          icon="i-lucide-triangle-alert"
-          :description="t('warning')" />
-
-        <UButton
-          variant="link"
-          color="neutral"
-          size="xs"
-          icon="i-lucide-rotate-ccw"
-          :label="t('reset')"
-          @click="style = { ...DEFAULT_QR_STYLE }" />
-      </div>
-    </template>
-  </UCollapsible>
+      size="xs"
+      icon="i-lucide-rotate-ccw"
+      :label="t('reset')"
+      @click="style = { ...DEFAULT_QR_STYLE }" />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -64,7 +53,6 @@ const scannable = computed(() =>
 
 <i18n lang="yaml">
 en:
-  title: 'Customize'
   color: 'Code color'
   background: 'Background'
   shape: 'Style'
@@ -75,7 +63,6 @@ en:
   warning: 'Low contrast or inverted colors: some scanners may fail to read this code.'
   reset: 'Reset'
 fr:
-  title: 'Personnaliser'
   color: 'Couleur du code'
   background: 'Fond'
   shape: 'Style'

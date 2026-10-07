@@ -14,7 +14,7 @@ export const DEFAULT_QR_STYLE: QrStyle = {
   dotsType: 'square',
 }
 
-const PREVIEW_SIZE = 280
+const PREVIEW_SIZE = 400
 const EXPORT_SIZE = 1024
 
 function buildOptions(data: string, style: QrStyle, size: number): Options {
