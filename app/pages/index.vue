@@ -10,6 +10,7 @@
       class="grid gap-6 lg:grid-cols-2 lg:grid-rows-[repeat(4,auto)_1fr] lg:items-start lg:gap-x-10">
       <UFormField
         class="lg:col-start-1"
+        :label="t('label')"
         :error="showError ? t('invalid') : undefined">
         <UInput
           v-model="input"
@@ -92,6 +93,7 @@ const { getBlob } = useQrCode(qrContainer, url, style)
 en:
   heading: 'Turn any link into a QR code'
   subheading: 'Paste a URL, tweak it, download or share.'
+  label: 'URL to convert'
   placeholder: 'https://example.com'
   clear: 'Clear'
   invalid: 'Enter a valid web address (e.g. example.com).'
@@ -99,6 +101,7 @@ en:
 fr:
   heading: "Transforme n'importe quel lien en QR code"
   subheading: 'Colle une URL, personnalise, télécharge ou partage.'
+  label: 'URL à convertir'
   placeholder: 'https://exemple.com'
   clear: 'Effacer'
   invalid: 'Saisis une adresse web valide (ex. exemple.com).'
