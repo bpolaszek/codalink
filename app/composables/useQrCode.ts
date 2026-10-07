@@ -9,9 +9,9 @@ export interface QrStyle {
 }
 
 export const DEFAULT_QR_STYLE: QrStyle = {
-  color: '#4f46e5',
+  color: '#000000',
   background: '#ffffff',
-  dotsType: 'rounded',
+  dotsType: 'square',
 }
 
 const PREVIEW_SIZE = 280
