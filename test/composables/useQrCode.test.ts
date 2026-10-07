@@ -16,13 +16,16 @@ class FakeQrCode {
   constructor(public options: Options) {
     instances.push(this)
   }
+
   update(options: Options) {
     this.updates.push(options)
     this.options = options
   }
+
   append(el: unknown) {
     this.appended.push(el)
   }
+
   getRawData = vi.fn(async () => new Blob(['qr']))
 }
 
