@@ -1,58 +1,68 @@
 <template>
-  <main class="mx-auto w-full max-w-xl space-y-6 px-4 pb-12">
-    <div class="space-y-1 text-center">
+  <main class="mx-auto w-full max-w-xl px-4 pb-12 lg:max-w-4xl">
+    <div class="mb-6 space-y-1 text-center">
       <h1 class="text-2xl font-bold sm:text-3xl">{{ t('heading') }}</h1>
       <p class="text-muted">{{ t('subheading') }}</p>
     </div>
 
-    <UFormField :error="showError ? t('invalid') : undefined">
-      <UInput
-        v-model="input"
-        type="url"
-        size="xl"
-        class="w-full"
-        icon="i-lucide-link"
-        inputmode="url"
-        autocomplete="off"
-        autocapitalize="none"
-        :placeholder="t('placeholder')"
-        :aria-label="t('placeholder')">
-        <template v-if="input" #trailing>
-          <UButton
-            variant="link"
-            color="neutral"
-            size="xs"
-            icon="i-lucide-x"
-            :aria-label="t('clear')"
-            @click="input = ''" />
-        </template>
-      </UInput>
-    </UFormField>
+    <!-- Mobile: single column in DOM order. Desktop: form on the left, QR card pinned on the right -->
+    <div
+      class="grid gap-6 lg:grid-cols-2 lg:grid-rows-[repeat(4,auto)_1fr] lg:items-start lg:gap-x-10">
+      <UFormField
+        class="lg:col-start-1"
+        :error="showError ? t('invalid') : undefined">
+        <UInput
+          v-model="input"
+          type="url"
+          size="xl"
+          class="w-full"
+          icon="i-lucide-link"
+          inputmode="url"
+          autocomplete="off"
+          autocapitalize="none"
+          :placeholder="t('placeholder')"
+          :aria-label="t('placeholder')">
+          <template v-if="input" #trailing>
+            <UButton
+              variant="link"
+              color="neutral"
+              size="xs"
+              icon="i-lucide-x"
+              :aria-label="t('clear')"
+              @click="input = ''" />
+          </template>
+        </UInput>
+      </UFormField>
 
-    <UCard>
-      <div class="flex min-h-[280px] items-center justify-center">
-        <div
-          v-show="url"
-          ref="qrContainer"
-          class="flex size-[280px] max-w-full items-center justify-center overflow-hidden rounded-lg [&>svg]:max-w-full" />
-        <div v-if="!url" class="text-muted flex flex-col items-center gap-2">
-          <UIcon name="i-lucide-qr-code" class="size-16" />
-          <p class="text-sm">{{ t('empty') }}</p>
+      <UCard
+        data-qr
+        class="lg:sticky lg:top-6 lg:col-start-2 lg:row-span-5 lg:row-start-1">
+        <div class="flex min-h-[280px] items-center justify-center">
+          <div
+            v-show="url"
+            ref="qrContainer"
+            class="flex size-[280px] max-w-full items-center justify-center overflow-hidden rounded-lg [&>svg]:max-w-full" />
+          <div v-if="!url" class="text-muted flex flex-col items-center gap-2">
+            <UIcon name="i-lucide-qr-code" class="size-16" />
+            <p class="text-sm">{{ t('empty') }}</p>
+          </div>
         </div>
-      </div>
-    </UCard>
+      </UCard>
 
-    <template v-if="url">
-      <QrActions
-        :get-blob="getBlob"
-        :filename="filename"
-        @done="history.add(url)" />
-    </template>
-    <QrCustomizer v-model="style" />
-    <UrlHistory
-      :entries="history.entries.value"
-      @select="input = $event"
-      @clear="history.clear()" />
+      <template v-if="url">
+        <QrActions
+          class="lg:col-start-1"
+          :get-blob="getBlob"
+          :filename="filename"
+          @done="history.add(url)" />
+      </template>
+      <QrCustomizer class="lg:col-start-1" v-model="style" />
+      <UrlHistory
+        class="lg:col-start-1"
+        :entries="history.entries.value"
+        @select="input = $event"
+        @clear="history.clear()" />
+    </div>
   </main>
 </template>
 

@@ -6,7 +6,7 @@
       :content="false"
       size="sm"
       class="w-full" />
-    <div class="grid grid-cols-1 gap-2 sm:grid-cols-3">
+    <div class="flex gap-2 *:flex-1">
       <UButton
         block
         icon="i-lucide-download"
