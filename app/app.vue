@@ -20,9 +20,9 @@ useSeoMeta({
 
 <i18n lang="yaml" global>
 en:
-  title: 'CodaLink - URL to QR code'
+  title: 'CodaLink - QRCode Generator'
   description: 'Turn any link into a QR code. Customize it, download it as PNG or SVG, copy it or share it.'
 fr:
-  title: 'CodaLink - URL en QR code'
+  title: 'CodaLink - Générateur de QR Code'
   description: "Transformez n'importe quel lien en QR code. Personnalisez-le, téléchargez-le en PNG ou SVG, copiez-le ou partagez-le."
 </i18n>

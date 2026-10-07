@@ -45,7 +45,7 @@ export default defineNuxtConfig({
     registerType: 'autoUpdate',
     client: { installPrompt: true },
     manifest: {
-      name: 'CodaLink',
+      name: 'CodaLink - QRCode Generator',
       short_name: 'CodaLink',
       description: 'Turn any link into a QR code.',
       theme_color: '#f97316',

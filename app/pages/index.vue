@@ -1,9 +1,8 @@
 <template>
   <main class="mx-auto w-full max-w-xl px-4 pb-12 lg:max-w-4xl">
-    <div class="mb-6 space-y-1 text-center">
-      <h1 class="text-2xl font-bold sm:text-3xl">{{ t('heading') }}</h1>
-      <p class="text-muted">{{ t('subheading') }}</p>
-    </div>
+    <h1 class="mb-6 text-center text-2xl font-bold sm:text-3xl">
+      {{ t('heading') }}
+    </h1>
 
     <!-- Mobile: single column in DOM order. Desktop: form on the left, QR card pinned on the right -->
     <div
@@ -94,7 +93,6 @@ const { getBlob } = useQrCode(qrContainer, url, style)
 <i18n lang="yaml">
 en:
   heading: 'Turn any link into a QR code'
-  subheading: 'Paste a URL, tweak it, download or share.'
   label: 'URL to convert'
   placeholder: 'https://example.com'
   clear: 'Clear'
@@ -102,7 +100,6 @@ en:
   empty: 'Your QR code will appear here'
 fr:
   heading: "Transformez n'importe quel lien en QR code"
-  subheading: 'Collez une URL, personnalisez, téléchargez ou partagez.'
   label: 'URL à convertir'
   placeholder: 'https://exemple.com'
   clear: 'Effacer'
