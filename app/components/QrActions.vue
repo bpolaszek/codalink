@@ -4,11 +4,13 @@
       v-model="format"
       :items="formats"
       :content="false"
+      :disabled="disabled"
       size="sm"
       class="w-full" />
     <div class="flex gap-2 *:flex-1">
       <UButton
         block
+        :disabled="disabled"
         icon="i-lucide-download"
         :label="t('download')"
         :loading="busy"
@@ -16,6 +18,7 @@
       <UButton
         v-if="canCopy"
         block
+        :disabled="disabled"
         variant="soft"
         icon="i-lucide-copy"
         :label="t('copy')"
@@ -23,6 +26,7 @@
       <UButton
         v-if="canShare"
         block
+        :disabled="disabled"
         variant="soft"
         icon="i-lucide-share-2"
         :label="t('share')"
@@ -35,6 +39,7 @@
 const props = defineProps<{
   getBlob: (format: QrFormat) => Promise<Blob>
   filename: string
+  disabled?: boolean
 }>()
 const emit = defineEmits<{ done: [] }>()
 

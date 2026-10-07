@@ -5,18 +5,24 @@
         <input
           v-model="style.color"
           type="color"
-          class="border-default h-9 w-full cursor-pointer rounded-lg border bg-transparent p-1" />
+          :disabled="disabled"
+          class="border-default h-9 w-full cursor-pointer rounded-lg border bg-transparent p-1 disabled:cursor-not-allowed disabled:opacity-50" />
       </UFormField>
       <UFormField :label="t('background')">
         <input
           v-model="style.background"
           type="color"
-          class="border-default h-9 w-full cursor-pointer rounded-lg border bg-transparent p-1" />
+          :disabled="disabled"
+          class="border-default h-9 w-full cursor-pointer rounded-lg border bg-transparent p-1 disabled:cursor-not-allowed disabled:opacity-50" />
       </UFormField>
     </div>
 
     <UFormField :label="t('shape')">
-      <USelect v-model="style.dotsType" :items="shapes" class="w-full" />
+      <USelect
+        v-model="style.dotsType"
+        :disabled="disabled"
+        :items="shapes"
+        class="w-full" />
     </UFormField>
 
     <UAlert
@@ -30,6 +36,7 @@
       variant="link"
       color="neutral"
       size="xs"
+      :disabled="disabled"
       icon="i-lucide-rotate-ccw"
       :label="t('reset')"
       @click="style = { ...DEFAULT_QR_STYLE }" />
@@ -38,6 +45,7 @@
 
 <script setup lang="ts">
 const style = defineModel<QrStyle>({ required: true })
+defineProps<{ disabled?: boolean }>()
 const { t } = useI18n()
 
 const shapes = computed(() => [

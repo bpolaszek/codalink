@@ -15,6 +15,7 @@
           v-model="input"
           type="url"
           size="xl"
+          autofocus
           class="w-full"
           icon="i-lucide-link"
           inputmode="url"
@@ -49,14 +50,13 @@
         </div>
       </UCard>
 
-      <template v-if="url">
-        <QrActions
-          class="lg:col-start-1"
-          :get-blob="getBlob"
-          :filename="filename"
-          @done="history.add(url)" />
-      </template>
-      <QrCustomizer class="lg:col-start-1" v-model="style" />
+      <QrActions
+        class="lg:col-start-1"
+        :get-blob="getBlob"
+        :filename="filename"
+        @done="url && history.add(url)"
+        :disabled="!url" />
+      <QrCustomizer class="lg:col-start-1" v-model="style" :disabled="!url" />
       <UrlHistory
         class="lg:col-start-1"
         :entries="history.entries.value"
